@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"net/http"
-	h "siteExample/handlers"
 	"time"
+	h "training/handlers"
 )
 
 func runServer(addr string) {
@@ -30,6 +30,7 @@ func runServer(addr string) {
 	//create pages
 	mux.HandleFunc("/", h.Root)
 	mux.HandleFunc("/test/", h.Test)
+	mux.HandleFunc("/login/", h.Login)
 
 	server := http.Server{
 		Addr:         addr,
