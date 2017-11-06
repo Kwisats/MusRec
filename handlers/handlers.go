@@ -48,16 +48,4 @@ func Root(w http.ResponseWriter, r *http.Request) {
 	w.Write(fileContent)
 }
 
-//Login ...
-func Login(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/login/" {
-		fmt.Fprintf(w, "<script>alert(\"page %s not found\")</script>", r.URL.Path)
-		return
-	}
-	fileContent, err := ioutil.ReadFile("static/pages/login.html")
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	w.Write(fileContent)
-}
+
