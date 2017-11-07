@@ -61,7 +61,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		}
 		fmt.Fprintln(w, "<script>alert(\"wrong login or password\")</script>")
 	}
-	fileContent, err := ioutil.ReadFile("static/pages/login.html")
+	fileContent, err := ioutil.ReadFile("static/pages/signin.html")
 	if err != nil {
 		fmt.Println(err)
 		return
