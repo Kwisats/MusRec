@@ -20,7 +20,7 @@ type User struct {
 
 //Login ...
 func Login(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/login/" {
+	if r.URL.Path != "/signin/" {
 		fmt.Fprintf(w, "<script>alert(\"page %s not found\")</script>", r.URL.Path)
 		return
 	}
@@ -39,6 +39,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		}
 		reader := bufio.NewReader(file)
 		user := User{}
+		emailFound := false
 		for {
 			line, err := reader.ReadBytes(byte('\n'))
 			if err != nil {
@@ -50,16 +51,19 @@ func Login(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			if user.Login == inputEmail {
+				emailFound = true
 				if user.Password == inputPassword {
 					//TODO something
 					fmt.Println("I know him")
 					return
 				}
-			} else {
-				continue
+				fmt.Fprintln(w, "<script>alert(\"wrong password\")</script>")
+				break
 			}
 		}
-		fmt.Fprintln(w, "<script>alert(\"wrong login or password\")</script>")
+		if emailFound == false {
+			fmt.Fprintln(w, "<script>alert(\"wrong login\")</script>")
+		}
 	}
 	fileContent, err := ioutil.ReadFile("static/pages/signin.html")
 	if err != nil {
