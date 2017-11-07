@@ -1,31 +1,37 @@
 <!DOCTYPE html>
-<html>
- <head>
+<html lang="en">
+    <head>
     <meta charset="utf-8">
-    <title>Authorization</title>
- </head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
 
- <body>
-    <div>
-      <form method="post">
-        
-        <h2>Please sign in</h2>
-        
-        <label for="inputEmail">Email address</label>
-        <input id="inputEmail" placeholder="Email address" required="" type="email" name="inputEmail">
-        
-        <label for="inputPassword">Password</label>
-        <input id="inputPassword" placeholder="Password" required="" type="password" name="inputPassword">
-        
-        <div class="checkbox">
-          <label>
-            <input value="remember-me" type="checkbox"> Remember me
-          </label>
-        </div>
-        
-        <button type="submit">Sign in</button>
-      
-    </form>
+    <title>Authorization</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/styles/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/styles/signin.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signin" role="form">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input class="form-control" placeholder="Email address" required="" autofocus="" type="email" name="inputEmail">
+        <input class="form-control" placeholder="Password" required="" type="password" name="inputPassword">
+        <label class="checkbox">
+          <input value="remember-me" type="checkbox"> Remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
     </div>
- </body>
+ 
+  </body>
 </html>
