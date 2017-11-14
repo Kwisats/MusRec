@@ -41,7 +41,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		user := User{}
 		emailFound := false
 		for {
-			line, err := reader.ReadBytes(byte('\n'))
+			line, err := reader.ReadBytes(byte('\n')) //file should has '\n' as last symbol
 			if err != nil {
 				break
 			}
@@ -53,8 +53,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			if user.Login == inputEmail {
 				emailFound = true
 				if user.Password == inputPassword {
-					//TODO something
-					fmt.Println("I know him")
+					http.Redirect(w, r, "/blog/", http.StatusPermanentRedirect) // redirect make full path itself from r.Host
 					return
 				}
 				fmt.Fprintln(w, "<script>alert(\"wrong password\")</script>")

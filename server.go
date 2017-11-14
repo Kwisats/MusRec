@@ -31,6 +31,7 @@ func runServer(addr string) {
 	mux.HandleFunc("/", h.Root)
 	mux.HandleFunc("/test/", h.Test)
 	mux.HandleFunc("/signin/", h.Login)
+	mux.HandleFunc("/blog/", h.Blog)
 
 	server := http.Server{
 		Addr:         addr,
