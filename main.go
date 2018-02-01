@@ -4,13 +4,15 @@ import (
 	"fmt"
 	"net/http"
 	"time"
-	h "training/handlers"
+	"os"
+	"log"
+	h "MusRec/pages"
 )
 
 func runServer(addr string) {
 	mux := http.NewServeMux()
 
-	//import static data
+	//import static data and templates
 	stylesHandler := http.StripPrefix(
 		"/styles/",
 		http.FileServer(http.Dir("./static/styles")),
@@ -23,15 +25,17 @@ func runServer(addr string) {
 		"/img/",
 		http.FileServer(http.Dir("./static/img")),
 	)
+	templatesHandler := http.StripPrefix(
+		"/img/",
+		http.FileServer(http.Dir("./static/img")),
+	)
 	mux.Handle("/styles/", stylesHandler)
 	mux.Handle("/js/", jsHandler)
 	mux.Handle("/img/", imgHandler)
+	mux.Handle("/templates/", templatesHandler)
 
 	//create pages
 	mux.HandleFunc("/", h.Root)
-	mux.HandleFunc("/test/", h.Test)
-	mux.HandleFunc("/signin/", h.Login)
-	mux.HandleFunc("/blog/", h.Blog)
 
 	server := http.Server{
 		Addr:         addr,
@@ -45,6 +49,10 @@ func runServer(addr string) {
 }
 
 func main() {
-	fmt.Println("Main starts")
-	runServer(":8080")
+	port := os.Getenv("PORT")
+	port = "8080"
+	if port == "" {
+        log.Fatal("$PORT must be set")
+    }
+	runServer(":" + port)
 }
