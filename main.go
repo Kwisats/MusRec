@@ -1,12 +1,12 @@
 package main
 
 import (
+	t "MusRec/fileHandler"
+	h "MusRec/handlers"
 	"fmt"
+	"log"
 	"net/http"
 	"time"
-	"os"
-	"log"
-	h "MusRec/pages"
 )
 
 func runServer(addr string) {
@@ -49,10 +49,16 @@ func runServer(addr string) {
 }
 
 func main() {
-	port := os.Getenv("PORT")
-	port = "8080"
+	//port := os.Getenv("PORT")
+	port := "8080"
 	if port == "" {
-        log.Fatal("$PORT must be set")
-    }
+		log.Fatal("$PORT must be set")
+	}
+	fileName := "ostan.mp3"
+	err := t.ToRaw(fileName)
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
 	runServer(":" + port)
 }

@@ -1,0 +1,2 @@
+#!/bin/bash
+ffmpeg -i ../musicFiles/ostan.mp3 -f s16le -acodec pcm_s16le ../rawData/ostan.raw

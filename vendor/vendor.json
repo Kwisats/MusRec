@@ -1,6 +1,13 @@
 {
 	"comment": "",
 	"ignore": "test",
-	"package": [],
+	"package": [
+		{
+			"checksumSHA1": "",
+			"comment": "",
+			"path": "github.com/mjibson/go-dsp/fft",
+			"revision": ""
+		}
+	],
 	"rootPath": "MusRec"
 }
