@@ -56,9 +56,12 @@ func main() {
 	}
 	fileName := "ostan.mp3"
 	err := t.ToRaw(fileName)
-	if err != nil {
-		log.Fatal(err)
-		return
-	}
+	check(err)
 	runServer(":" + port)
+}
+
+func check(e error) {
+	if e != nil {
+		log.Fatal(e)
+	}
 }

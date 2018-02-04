@@ -1,2 +1,5 @@
 #!/bin/bash
-ffmpeg -i ../musicFiles/ostan.mp3 -f s16le -acodec pcm_s16le ../rawData/ostan.raw
+if [[ -e $GOPATH/src/MusRec/musicFiles/ostan.mp3 &&  ! -e $GOPATH/src/MusRec/rawData/ostan.raw ]]
+then
+ffmpeg -i $GOPATH/src/MusRec/musicFiles/ostan.mp3 -f s16le -acodec pcm_s16le $GOPATH/src/MusRec/rawData/ostan.raw
+fi
