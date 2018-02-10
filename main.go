@@ -54,7 +54,8 @@ func main() {
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
-	fileName := "ostan.mp3"
+	//filNames for tests "Sinusoida_1_kGc", "ostan", "04370", "20hz"
+	fileName := "20hz"
 	err := t.ToRaw(fileName)
 	check(err)
 	runServer(":" + port)

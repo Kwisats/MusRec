@@ -1,0 +1,4 @@
+#!/usr/bin/gnuplot
+set terminal png size 1024, 768
+set output "forTest/output.png"
+plot 'forTest/output.txt' u 1:2 w linesp
